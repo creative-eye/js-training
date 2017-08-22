@@ -1,31 +1,28 @@
-class AssessmentClass {
-
-    constructor(x, y) {
-        this.x = x;
+function AssessmentClass(x, y) {
+ 	    this.x = x;
         this.y = y;
         this.arr = [];
         this.result = null;
-    }
 
-    Range() {
+    this.Range = function() {
         for (var i = this.x; i <= this.y; i++) {
             this.arr.push(i);
         }
         console.log(this.arr);
         return this;
 
-    }
+    };
 
-    Sum() {
+    this.Sum = function() {
         this.result = 0;
         for (var i = 0; i < this.arr.length; i++) {
             this.result = this.result + this.arr[i];
         }
         console.log(this.result);
         return this;
-    }
+    };
 
-    Select(arr) {
+    this.Select = function(arr) {
         for (var i = 0; i < arr.length; i++) {
             if (arr[i] % 2 === 0) {
                 console.log(arr[i]);
@@ -33,9 +30,9 @@ class AssessmentClass {
 
         }
         return this;
-    }
+    };
 
-    Select2(arr) {
+    this.Select2 = function(arr) {
         var temparr = arr.slice();
         var output = [];
 
@@ -53,18 +50,18 @@ class AssessmentClass {
 
         };
         result(temparr)
-    }
+    };
 
-    Drop_while(arr, num) {
+    this.Drop_while = function(arr, num) {
         for (var i = 0; i < arr.length; i++) {
             if (arr[i] > num) {
                 console.log(arr[i]);
             }
         }
         return this;
-    }
+    };
 
-    Drop_while2(arr, num) {
+    this.Drop_while2 = function(arr, num) {
         var temparr = arr.slice();
         var output = [];
 

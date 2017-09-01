@@ -84,24 +84,25 @@ function search(dataToSearch,data){
 }
 
 /*Actions and tamplate*/
-$('#Button').on('click',function(){
+$('#ButtonName').on('click',function(){
     var getNameData = $('#searhByName').val();
-    var getTypeData = $('#searhByType').val();
-
     var flatenedName =  search(getNameData,gamesFlatenedNames);
-    var flatenedType =  search(getTypeData,gamesFlatenedType);
 
     if(flatenedName[0] == getNameData ){
-         $('#message').append("<p class='succes'>Selected answer: " + flatenedName[0].toUpperCase() + "</p>");
+        $('#messageName').append("<p class='succes'>Selected answer: " + flatenedName[0].toUpperCase() + "</p>");
     }else{
-         $('#message').append("<p class='error'>Name not found. Please try again!</p>");
+        $('#messageName').append("<p class='error'>Name not found. Please try again!</p>");
     }
-    if(flatenedType[0] == getTypeData ){
-        $('#message').append("<p class='succes'>Type of the game is " + flatenedType[0].toUpperCase() + "</p>");
-    }else{
-        $('#message').append("<p class='error'>Type not found. Please try again!</p>");
-    }
+});
+$('#ButtonType').on('click',function(){
+    var getTypeData = $('#searhByType').val();
+    var flatenedType =  search(getTypeData,gamesFlatenedType);
 
+    if(flatenedType[0] == getTypeData ){
+        $('#messageType').append("<p class='succes'>Type of the game is " + flatenedType[0].toUpperCase() + "</p>");
+    }else{
+        $('#messageType').append("<p class='error'>Type not found. Please try again!</p>");
+    }
 });
 
 //Jackpot filter

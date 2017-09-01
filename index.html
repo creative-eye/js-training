@@ -3,9 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>JS-Training</title>
+    <style>
+        .succes{ color: green; }
+        .error{ color: red; }
+    </style>
 </head>
 <body>
+    <h2>Filter:</h2>
 
-<script src="1 - recursion, chaining, es5 classes/stefan-homework.js"></script>
+    <!-- Search by name -->
+    <label for="searhByName">Search by name:</label>
+    <input id='searhByName' name="" value ="" placeholder="Search by name..."/>
+    <br/><br/>
+
+    <!-- Search by type-->
+    <label for="searhByType">Search by type:</label>
+    <input id='searhByType' name="" value ="" placeholder="Search by type..."/>
+    <br/><br/>
+    <button id='Button' type="button" name="Submit" value="Submit" />Submit</button>
+
+    <br/> <br/>
+    <div id="message"></div>
+
+    <!-- List game with selected item -->
+    <input id='searchJackpot' type="checkbox" name="jackpot" value="">Jackpot<br>
+    <ul id="ListJackpots"></ul>
+    <br/>
+    <hr/>
+
+    <!-- Select -->
+    <h2 style="display: inline-block; ">Select:</h2>
+    <select id="selectPeople">
+        <option value="choose">Choose ID:</option>
+    </select>
+    <ul style='list-style-type: none' id="listPeople"></ul>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="2 - functional intro, data manipulation/andreea-ex1.js"></script>
+</body>
 </body>
 </html>

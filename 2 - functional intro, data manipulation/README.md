@@ -16,7 +16,10 @@ const games = [
     { name: 'alibaba', type: 'live', jackpot: true },
     { name: 'dracula', type: 'pacanale', jackpot: false },
     { name: 'dracula', type: 'pacanale', jackpot: true,
-        children: [{ name: 'cosmic fortune', type: 'pacanele', jackpot: true }, { name: 'gonzo cautare', type: 'poker', jackpot: false },] }
+        children: [{ name: 'cosmic fortune', type: 'pacanele', jackpot: true },
+                   { name: 'gonzo cautare', type: 'poker', jackpot: false }
+                  ]
+    }
 ];
 ```
 Implement a filter bar that consists of:
@@ -42,6 +45,7 @@ const peopleArray = [
     { id: 102, name: 'tim', age: 23 }
 ];
 ```
-Implement a select tag that displays all the id's from the array and when a certain id is selected, display the corespondent data into the DOM.
+Implement a select tag that displays all the id's from the array and when a certain id is selected,
+display the corespondent data into the DOM.
 
 Bonus points: Convert the array to an object and load data from the object with id's as keys.

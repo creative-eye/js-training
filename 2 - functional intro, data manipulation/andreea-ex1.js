@@ -113,12 +113,12 @@ $('#Button').on('click',function(){
             var index;
             $('#ListJackpots').empty();
             for(index = 0; index < takeTruJackpots.length; index++ ){
-                $('#ListJackpots').append("<p>" + takeTruJackpots[index] + "</p>")
+                $('#ListJackpots').append("<li>" + takeTruJackpots[index] + "</li>")
             }
         }else{
             $('#ListJackpots').empty();
             for(index = 0; index < takeFalseJackpots.length; index++ ){
-                $('#ListJackpots').append("<p>" + takeFalseJackpots[index] + "</p>")
+                $('#ListJackpots').append("<li>" + takeFalseJackpots[index] + "</li>")
             }
         }
     });

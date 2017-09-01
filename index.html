@@ -4,28 +4,42 @@
     <meta charset="UTF-8">
     <title>JS-Training</title>
     <style>
-        .succes{ color: green; }
-        .error{ color: red; }
+        body { font-family: Helvetica, sans-serif; }
+        h2,h3 { margin: 0;}
+        ul,ol { padding: 10px 0; margin: 0; line-height: 2; list-style-type: none;  max-width: 200px; }
+        .succes{ color: green; font-size: 12px; }
+        .error{ color: red; font-size: 12px; }
+        label { display: block; width: 150px; float: left }
+        .searchByName,.searchByType { float: left; width: 100%; padding: 5px 0; }
+        .filter { width: 500px; margin: 50px auto; float: none; padding: 10px;}
     </style>
 </head>
 <body>
+<div class="filter">
     <h2>Filter:</h2>
-
+    <hr/>
     <!-- Search by name -->
-    <label for="searhByName">Search by name:</label>
-    <input id='searhByName' name="" value ="" placeholder="Search by name..."/>
+    <div class="searchByName">
+        <label for="searhByName">Search by name:</label>
+        <input id='searhByName' name="" value ="" placeholder="Search by name..."/>
+    </div>
     <br/><br/>
 
     <!-- Search by type-->
-    <label for="searhByType">Search by type:</label>
-    <input id='searhByType' name="" value ="" placeholder="Search by type..."/>
-    <br/><br/>
+    <div class="searchByType">
+        <label for="searhByType">Search by type:</label>
+        <input id='searhByType' name="" value ="" placeholder="Search by type..."/>
+    </div>
+    <div id="message"></div>
+    <br/>
     <button id='Button' type="button" name="Submit" value="Submit" />Submit</button>
 
     <br/> <br/>
-    <div id="message"></div>
+
 
     <!-- List game with selected item -->
+    <h2>Jackpots games:</h2>
+    <hr/>
     <input id='searchJackpot' type="checkbox" name="jackpot" value="">Jackpot<br>
     <ul id="ListJackpots"></ul>
     <br/>
@@ -36,7 +50,9 @@
     <select id="selectPeople">
         <option value="choose">Choose ID:</option>
     </select>
-    <ul style='list-style-type: none' id="listPeople"></ul>
+    <ul id="listPeople"></ul>
+</div>
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="2 - functional intro, data manipulation/andreea-ex1.js"></script>

@@ -44,7 +44,7 @@ function boolProp(data, bool ) {
             if (data[prop].children) {
                 var childrenGames = data[prop].children;
                 for (var propChildren in childrenGames) {
-                    if (childrenGames[propChildren]['jackpot']) {
+                    if (childrenGames[propChildren]['jackpot'] == bool ) {
                         stockAllTrueJAckpot.push(childrenGames[propChildren]['name']);
                     }
                 }
@@ -87,7 +87,7 @@ function search(dataToSearch,data){
 $('#ButtonName').on('click',function(){
     var getNameData = $('#searhByName').val();
     var flatenedName =  search(getNameData,gamesFlatenedNames);
-
+    $('#messageName').empty();
     if(flatenedName[0] == getNameData ){
         $('#messageName').append("<p class='succes'>Selected answer: " + flatenedName[0].toUpperCase() + "</p>");
     }else{
@@ -97,7 +97,7 @@ $('#ButtonName').on('click',function(){
 $('#ButtonType').on('click',function(){
     var getTypeData = $('#searhByType').val();
     var flatenedType =  search(getTypeData,gamesFlatenedType);
-
+    $('#messageType').empty();
     if(flatenedType[0] == getTypeData ){
         $('#messageType').append("<p class='succes'>Type of the game is " + flatenedType[0].toUpperCase() + "</p>");
     }else{

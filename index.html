@@ -22,7 +22,7 @@
     <!-- Search by name -->
     <div class="searchByName">
         <label for="searhByName">Search by name:</label>
-        <input id='searhByName' name="" value ="" placeholder="Search by name..."/>
+        <input id='searhByName' name="" value ="" required placeholder="Search by name..."/>
     </div>
     <br/>
     <button id='ButtonName' type="button" name="" value="Submit" />Submit</button>
@@ -32,7 +32,7 @@
     <!-- Search by type-->
     <div class="searchByType">
         <label for="searhByType">Search by type:</label>
-        <input id='searhByType' name="" value ="" placeholder="Search by type..."/>
+        <input id='searhByType' name="" value ="" required placeholder="Search by type..."/>
     </div>
     <br/>
     <button id='ButtonType' type="button" name="" value="Submit" />Submit</button>
@@ -53,6 +53,12 @@
         <option value="choose">Choose ID:</option>
     </select>
     <ul id="listPeople"></ul>
+    <!-- SelectKey -->
+    <h2 style="display: inline-block; ">Select as key:</h2>
+    <select id="selectPeopleKey">
+        <option value="choose">Choose ID as Key:</option>
+    </select>
+    <ul id="listPeopleKey"></ul>
 </div>
 
 

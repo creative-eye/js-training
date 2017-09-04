@@ -154,13 +154,42 @@ $('#selectPeople').change(function(e){
 });
 
 /*Ex2 - Convert the array to an object*/
-peopleArray.reduce(
+var people = peopleArray.reduce(
     function (newPeopleObj, current, item ) {
         newPeopleObj[item] = current;
         return newPeopleObj;
     },{}
 );
 
-/*and load data from the object with id's as keys*/
-/*var keys = Object.keys(peopleObject);*/
+/*Convert the array to an object and load data from the object with id's as keys*/
+function loadObjAsKey(data){
+    var people = data.reduce(
+        function (newPeopleObj, current, item, array ) {
+            array[item] = current.id;
+            newPeopleObj[array[item]] = current;
+            return  newPeopleObj;
+        },{}
+    );
+    return people;
+}
+
+var loadObjKey = loadObjAsKey(peopleArray);
+    for (var key in loadObjKey) {
+            if (loadObjKey.hasOwnProperty(key)) {
+                var objKeyId = loadObjKey[key].id;
+                $('#selectPeopleKey').append("<option value=" + objKeyId + ">" + objKeyId + "</option>");
+            }
+    }
+
+$('#selectPeopleKey').change(function() {
+    var getValue = $('#selectPeopleKey').val();
+    $('#listPeople').empty();
+    for (var key in loadObjKey) {
+        if (loadObjKey.hasOwnProperty(key)) {
+            if (getValue == loadObjKey[key]) {
+                $('#listPeopleKey').append("<li id= item_ " + loadObjKey[key] + ">" + loadObjKey[key].name.toUpperCase() + " " + loadObjKey[key].age + " ani</li>");
+            }
+        }
+    }
+});
 

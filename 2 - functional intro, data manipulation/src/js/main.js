@@ -1,3 +1,10 @@
+//I haven't used jQuerry because I want to learn to be independent of jQuerry
+//I have used ES6 because I want to learn to use ES6
+
+//I had a functional programming approach because it's easier to code
+
+
+/*Variabels*/
 const games = [
 	{name: 'alibaba', type: 'pacanele', jackpot: false},
 	{name: 'alibaba2', type: 'live', jackpot: false},
@@ -33,11 +40,12 @@ let searchType = '';
 let filteredGames = flattenGames.slice(0);
 let jackpotCheck = false;
 
+/*Initial Game Loade game*/
 filteredGames.forEach(game => {
 	target.insertAdjacentHTML('beforeend', `<li data-type="${game.type}" data-jackpot="${game.jackpot}">${game.name}</li>`);
 });
 
-
+/*Event listeners*/
 searchname.addEventListener('keyup', function () {
 	searchName = this.value;
 	filteredGames = flattenGames.slice(0);
@@ -88,6 +96,7 @@ jackpot.addEventListener('click', function () {
 	});
 });
 
+/*Custom made functions to help me*/
 function FilterGames(arr, apliedfilter, input) {
 	let output = [];
 	arr.filter(game => {

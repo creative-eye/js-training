@@ -48,52 +48,16 @@ filteredGames.forEach(game => {
 /*Event listeners*/
 searchname.addEventListener('keyup', function () {
 	searchName = this.value;
-	filteredGames = flattenGames.slice(0);
-
-	filteredGames = FilterJackPot(filteredGames, jackpotCheck);
-	filteredGames = FilterGames(filteredGames, 'type', searchType);
-	filteredGames = FilterGames(filteredGames, 'name', searchName);
-
-	while (target.hasChildNodes()) {
-		target.removeChild(target.firstChild);
-	}
-	filteredGames.forEach(game => {
-		target.insertAdjacentHTML('beforeend', `<li data-type="${game.type}" data-jackpot="${game.jackpot}">${game.name}</li>`);
-	});
-	console.log(filteredGames);
-
+	Search();
 });
 searchtype.addEventListener('keyup', function () {
 	searchType = this.value;
-	filteredGames = flattenGames.slice(0);
-
-	filteredGames = FilterJackPot(filteredGames, jackpotCheck);
-	filteredGames = FilterGames(filteredGames, 'name', searchName);
-	filteredGames = FilterGames(filteredGames, 'type', searchType);
-
-	while (target.hasChildNodes()) {
-		target.removeChild(target.firstChild);
-	}
-	filteredGames.forEach(game => {
-		target.insertAdjacentHTML('beforeend', `<li data-type="${game.type}" data-jackpot="${game.jackpot}">${game.name}</li>`);
-	});
-	console.log(filteredGames);
-
+	Search();
 });
 
 jackpot.addEventListener('click', function () {
 	jackpotCheck = !jackpotCheck;
-	filteredGames = flattenGames.slice(0);
-
-	filteredGames = FilterGames(filteredGames, 'name', searchName);
-	filteredGames = FilterGames(filteredGames, 'type', searchType);
-	filteredGames = FilterJackPot(filteredGames, jackpotCheck);
-	while (target.hasChildNodes()) {
-		target.removeChild(target.firstChild);
-	}
-	filteredGames.forEach(game => {
-		target.insertAdjacentHTML('beforeend', `<li data-type="${game.type}" data-jackpot="${game.jackpot}">${game.name}</li>`);
-	});
+	Search();
 });
 
 /*Custom made functions to help me*/
@@ -120,3 +84,36 @@ function FilterJackPot(arr, input) {
 	}
 	return output;
 }
+
+function Search() {
+
+	filteredGames = flattenGames.slice(0);
+
+	filteredGames = FilterJackPot(filteredGames, jackpotCheck);
+	filteredGames = FilterGames(filteredGames, 'name', searchName);
+	filteredGames = FilterGames(filteredGames, 'type', searchType);
+
+	while (target.hasChildNodes()) {
+		target.removeChild(target.firstChild);
+	}
+	filteredGames.forEach(game => {
+		target.insertAdjacentHTML('beforeend', `<li data-type="${game.type}" data-jackpot="${game.jackpot}">${game.name}</li>`);
+	});
+}
+
+/*-----------------------------------*/
+const secondTarget = document.getElementById('secondTarget');
+let user;
+
+peopleArray = [
+	{id: 123, name: 'dave', age: 23},
+	{id: 456, name: 'chris', age: 23},
+	{id: 789, name: 'bob', age: 23},
+	{id: 101, name: 'tom', age: 23},
+	{id: 102, name: 'tim', age: 23}
+];
+
+peopleArray.forEach(user => {
+	secondTarget.insertAdjacentHTML('beforeend', `<li class="itemUser" data-age="${user.age}" data-id="${user.id}">${user.name}</li>`);
+});
+

@@ -3,8 +3,11 @@
 
 //I had a functional programming approach because it's easier to code
 
+/*-----------------------------------*/
+/*ex 1*/
+/*-----------------------------------*/
 
-/*Variabels*/
+/*Variables*/
 const games = [
 	{name: 'alibaba', type: 'pacanele', jackpot: false},
 	{name: 'alibaba2', type: 'live', jackpot: false},
@@ -102,18 +105,24 @@ function Search() {
 }
 
 /*-----------------------------------*/
-const secondTarget = document.getElementById('secondTarget');
-let user;
+/*ex 2*/
+/*-----------------------------------*/
 
-peopleArray = [
+/*Variables*/
+const peopleArray = [
 	{id: 123, name: 'dave', age: 23},
 	{id: 456, name: 'chris', age: 23},
 	{id: 789, name: 'bob', age: 23},
 	{id: 101, name: 'tom', age: 23},
 	{id: 102, name: 'tim', age: 23}
 ];
+const secondTarget = document.getElementById('secondTarget');
+const thirdTarget = document.getElementById('thirdTarget');
 
 peopleArray.forEach(user => {
-	secondTarget.insertAdjacentHTML('beforeend', `<li class="itemUser" data-age="${user.age}" data-id="${user.id}">${user.name}</li>`);
+    secondTarget.insertAdjacentHTML('beforeend', `<option value="${user.id}">${user.name +' ' + user.age}</option>`)
 });
 
+secondTarget.addEventListener('change', function(){
+	thirdTarget.textContent = this.value;
+});

@@ -65,13 +65,7 @@ jackpot.addEventListener('click', function () {
 
 /*Custom made functions to help me*/
 function FilterGames(arr, apliedfilter, input) {
-	let output = [];
-	arr.filter(game => {
-		if (game[apliedfilter].toLowerCase().indexOf(input.toLowerCase()) !== -1) {
-			output.push(game);
-		}
-	});
-	return output;
+		return arr.filter(game => game[apliedfilter].toLowerCase().indexOf(input.toLowerCase()) > -1);
 }
 
 function FilterJackPot(arr, input) {

@@ -44,6 +44,10 @@ let filteredGames = flattenGames.slice(0);
 let jackpotCheck = false;
 
 /*Initial Game Loade game*/
+for(i=0; i < filteredGames.length; i++) {
+	console.log(i);
+}
+
 filteredGames.forEach(game => {
 	target.insertAdjacentHTML('beforeend', `<li data-type="${game.type}" data-jackpot="${game.jackpot}">${game.name}</li>`);
 });
@@ -63,27 +67,20 @@ jackpot.addEventListener('click', function () {
 	Search();
 });
 
-/*Custom made functions to help me*/
+/*Custom made functions*/
 function FilterGames(arr, apliedfilter, input) {
 		return arr.filter(game => game[apliedfilter].toLowerCase().indexOf(input.toLowerCase()) > -1);
 }
 
 function FilterJackPot(arr, input) {
-	let output = [];
-	if (input) {
-		arr.filter(game => {
-			if (game.jackpot) {
-				output.push(game);
-			}
-		})
-	} else {
-		return arr;
+
+	if(input === true) {
+		return arr.filter(game => game.jackpot )
 	}
-	return output;
+	return arr;
 }
 
 function Search() {
-
 	filteredGames = flattenGames.slice(0);
 
 	filteredGames = FilterJackPot(filteredGames, jackpotCheck);

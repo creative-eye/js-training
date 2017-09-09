@@ -2,50 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ex 2</title>
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <title>Morarasu - ex 2</title>
+    <script src="./src/js/main.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
 </head>
 <body>
-<h2>Excercise 1</h2>
-    <div class="Container">
-        <label for="search-by-name">Filter by name</label>
-        <input class="SearchByNameInput"
-               id="search-by-name"
-               type="text"
-        />
+<main class="Main">
+    <h1 class="Title">Exercise 2:</h1>
+    <h2 class="subtitle">Ex 1:</h2>
+    <div class="Search">
+        <label for="searchname">Search by name:</label>
+        <input id="searchname" type="text" class="searchInput">
+        <label for="searchtype">Search by type:</label>
+        <input id="searchtype" type="text" class="searchInput">
+        <input id="jackpot" type="checkbox">
+        <label for="jackpot">Jackpot</label>
     </div>
-    <div class="Container">
-        <label for="search-by-type">Filter by type</label>
-        <input class="SearchByTypeInput"
-               id="search-by-type"
-               type="text"
-        />
-    </div>
-    <button class="Search Button">Search</button>
-    <div class="Container">
-        <label for="search-by-type">Jackpots</label>
-        <input class="JackpotsCheck"
-               id="search-by-type"
-               type="checkbox"
-        />
-    </div>
+    <ul id="target" class="GameList">
 
-    <div class="Container">
-        <ul class="List">
+    </ul>
+    <h2 class="subtitle">Ex 2:</h2>
 
-        </ul>
-    </div>
-
-<h2>Excersise 2</h2>
-    <label for="select-id">Select ID</label>
-    <select class="SelectID" id="select-id">
-        <option value="">Select</option>
+    <select id="secondTarget" name="">
+        <option value="none">-</option>
     </select>
-    <div>Current Guy selected
-        <div class="DisplayID"></div>
-    </div>
-
-    <script src="stefan-homework2-ex1.js"></script>
-    <script src="stefan-homework2-ex2.js"></script>
+    <p>Id of Select: <span id="thirdTarget"></span></p>
+</main>
 </body>
 </html>

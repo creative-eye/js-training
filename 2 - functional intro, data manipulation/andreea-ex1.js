@@ -13,108 +13,73 @@ const games = [
     }
 ];
 
-/*EX01-flatten data*/
-function flatenedGames(data, nameProp){
-    var gamesFlatenedNames = data.reduce(
-        function (gamesName, current) {
-            var allName = gamesName.concat(current[nameProp]);
-            if (current.children) {
-                var children = current.children;
-                var childrenFlaten = children.reduce(
-                    function (gamesChialdName, currentChiald) {
-                        var newChildren = gamesChialdName.concat(currentChiald[nameProp]);
-                        return newChildren;
-                    }, []);
-                var allGameName = allName.concat(childrenFlaten);
-                return allGameName;
+//EX1
+function filterByType(data,typeToSearch,childrenKey){
+    let all = [];
+    for(let index = 0; index < data.length; index++){
+        let children = data[index][childrenKey];
+        all.push(data[index][typeToSearch]);
+        if( children ){
+            for ( let k in children ) {
+                all.push(children[k][typeToSearch]);
             }
-            return allName;
         }
-        , []);
-    return gamesFlatenedNames;
+    }
+    return all;
+}
+var searchByName = filterByType(games, 'name', 'children' );
+var searchByType = filterByType(games, 'type', 'children');
+var searchByJackpot = filterByType(games, 'jackpot', 'children' );
+
+function filterByBool(whatToSerach,bollToSearch, bool){
+    var allBool = [];
+    for (let index = 0; index < whatToSerach.length; index++){
+        if(bollToSearch[index] === bool ){
+            allBool.push(whatToSerach[index]);
+        }
+    }
+    return allBool;
 }
 
-//*Returne all positive jackpot names
-function boolProp(data, bool ) {
-    var stockAllTrueJAckpot = [];
-    for (var prop in data) {
-        if (data[prop]['jackpot'] == bool ){
-            var gamesProp = data[prop];
-            stockAllTrueJAckpot.push(gamesProp['name']);
-            if (data[prop].children) {
-                var childrenGames = data[prop].children;
-                for (var propChildren in childrenGames) {
-                    if (childrenGames[propChildren]['jackpot'] == bool ) {
-                        stockAllTrueJAckpot.push(childrenGames[propChildren]['name']);
-                    }
-                }
-            }
-        }
-    }
-    return stockAllTrueJAckpot;
-};
-
-/*EX02-Search by type*/
-var gamesFlatenedNames =  flatenedGames(games,'name');
-var gamesFlatenedType =  flatenedGames(games,'type');
-
-function search(dataToSearch,data){
-    if(typeof(dataToSearch) === "boolean"){
-        dataToSearch.toString();
-    }else{
-        dataToSearch
-            .trim()
-            .toLowerCase();
-    }
-    var stock = [];
-    for( var item = 0; item < data.length-1; item++){
-        if(typeof(data[item]) === "boolean"){
-            data[item].toString();
-        }else{
-            data[item]
-                .trim()
-                .toLowerCase();
-        }
-        if(data[item] == dataToSearch){
-            stock.push(dataToSearch);
-        }
-    }
-    $('#message').empty();
-    return stock;
+//Search after string in array
+function filterItems(arrayToSearch, query){
+   return arrayToSearch.filter(function(el){
+       return el.toLowerCase().indexOf(query.toLocaleLowerCase()) > -1;
+   })
 }
 
 /*Actions and tamplate*/
 $('#ButtonName').on('click',function(){
     var getNameData = $('#searhByName').val();
-    var flatenedName =  search(getNameData,gamesFlatenedNames);
+    var serachName =  filterItems(searchByName,getNameData);
     $('#messageName').empty();
-    if(flatenedName[0] == getNameData ){
-        $('#messageName').append("<p class='succes'>Selected answer: " + flatenedName[0].toUpperCase() + "</p>");
+    if( serachName[0] === getNameData ){
+        $('#messageName').append("<p class='succes'>Selected answer: " + serachName[0].toUpperCase() + "</p>");
     }else{
         $('#messageName').append("<p class='error'>Name not found. Please try again!</p>");
     }
 });
+
 $('#ButtonType').on('click',function(){
     var getTypeData = $('#searhByType').val();
-    var flatenedType =  search(getTypeData,gamesFlatenedType);
+    var serachType =  filterItems(searchByType,getTypeData);
     $('#messageType').empty();
-    if(flatenedType[0] == getTypeData ){
-        $('#messageType').append("<p class='succes'>Type of the game is " + flatenedType[0].toUpperCase() + "</p>");
+    if(serachType[0] === getTypeData ){
+        $('#messageType').append("<p class='succes'>Type of the game is " + serachType[0].toUpperCase() + "</p>");
     }else{
         $('#messageType').append("<p class='error'>Type not found. Please try again!</p>");
     }
 });
+var takeTrueJackpots = filterByBool( searchByName, searchByJackpot, true);
+var takeFalseJackpots = filterByBool( searchByName, searchByJackpot, false);
 
 //Jackpot filter
-    var takeTruJackpots = boolProp(games, true);
-    var takeFalseJackpots = boolProp(games, false);
-
     $('#searchJackpot').change(function(){
-        if(this.checked == true ){
+        if(this.checked === true ){
             var index;
             $('#ListJackpots').empty();
-            for(index = 0; index < takeTruJackpots.length; index++ ){
-                $('#ListJackpots').append("<li>" + takeTruJackpots[index] + "</li>")
+            for(index = 0; index < takeTrueJackpots.length; index++ ){
+                $('#ListJackpots').append("<li>" + takeTrueJackpots[index] + "</li>")
             }
         }else{
             $('#ListJackpots').empty();

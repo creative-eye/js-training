@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Excercise 2</h2>
+<div class="Container">
+    <label for="search-by-name">Filter by name</label>
+    <input class="SearchByNameInput"
+           id="search-by-name"
+           type="text"
+    />
+</div>
+<div class="Container">
+    <label for="search-by-type">Filter by type</label>
+    <input class="SearchByTypeInput"
+           id="search-by-type"
+           type="text"
+    />
+</div>
+<button class="Search Button">Search</button>
+<div class="Container">
+    <label for="search-by-type">Jackpots</label>
+    <input class="JackpotsCheck"
+           id="search-by-type"
+           type="checkbox"
+    />
+</div>
+
+<div class="Container">
+    <ul class="List">
+
+    </ul>
+</div>
+<script>
+    (function () {
+        // data layer
+        function dataLayer() {
+            return {
+                getData,
+                mapData,
+            };
+
+            function getData() {
+                // if games in localStorage then return localStorage data
+                // local cache - will update on refresh
+                const games = [
+                    { name: 'alibaba', type: 'pacanele', jackpot: false },
+                    { name: 'alibaba2', type: 'live', jackpot: false },
+                    { name: 'gonzo cautare', type: 'poker', jackpot: false },
+                    { name: 'alibaba', type: 'live', jackpot: true },
+                    { name: 'dracula', type: 'pacanale', jackpot: false },
+                    { name: 'dracula', type: 'pacanale', jackpot: true,
+                        children: [{ name: 'cosmic fortune', type: 'pacanele', jackpot: true }, { name: 'gonzo cautare', type: 'poker', jackpot: false }]
+                    }
+                ];
+                // save games to localstorage
+                return games;
+            }
+
+            function mapData(data) {
+                return data.reduce((prev, next) => {
+                    const res = _deepClone(prev);
+                    if(next.children){
+                        res.push(next);
+                        return res.concat(next.children);
+                    }
+                    return res.concat(next);
+                }, []);
+            }
+
+            /**
+             * Start private methods
+             */
+            function _deepClone(obj) {
+                if (typeof obj !== 'undefined') {
+                    return JSON.parse(JSON.stringify(obj));
+                }
+                return obj;
+            }
+        }
+
+        // business logic - filter method
+        function businessLogic() {
+            return {
+                filterDataByType,
+            };
+
+            function filterDataByType(data, type) {
+                // deepClone
+                return;
+            }
+        }
+
+        // DOM manipulation
+        // event listeners
+        function domMethods() {
+            return {
+                init,
+            };
+            // cache filters and result
+            function init(el) {
+                el.addEventListener('click', (e) => {
+                    let newData = [];
+                    // detect filter changes
+                    newData = businessLogic.filterDataByType(newData);
+                    // filter data based on input values
+                    updateDOMWithData(newData, el);
+                });
+            }
+
+            function updateDOMWithData(data, el) {
+                // logic update DOM data
+            }
+        }
+
+        function app() {
+            return {
+                init,
+            };
+
+            function init() {
+                dataLayer.init();
+                domMethods.init();
+            }
+
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            app.init();
+        });
+    })();
+
+</script>
+</body>
+</html>

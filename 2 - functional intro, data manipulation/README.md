@@ -42,6 +42,7 @@ const peopleArray = [
     { id: 102, name: 'tim', age: 23 }
 ];
 ```
-Implement a select tag that displays all the id's from the array and when a certain id is selected, display the corespondent data into the DOM.
+Implement a select tag that displays all the id's from the array and when a certain id is selected,
+display the corespondent data into the DOM.
 
 Bonus points: Convert the array to an object and load data from the object with id's as keys.

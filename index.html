@@ -3,11 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>JS-Training</title>
+    <style>
+        body { font-family: Helvetica, sans-serif; }
+        h2,h3 { margin: 0;}
+        ul,ol { padding: 10px 0; margin: 0; line-height: 2; list-style-type: none;  max-width: 200px; }
+        .succes{ color: green; font-size: 14px; }
+        .error{ color: red; font-size: 14px; }
+        label { display: block; width: 150px; float: left }
+        button{ display: block; float: left;  margin: -14px 0; }
+        .searchByName,.searchByType { float: left; width: 350px; padding: 5px 0; }
+        .filter { width: 500px; margin: 50px auto; float: none; padding: 10px;}
+    </style>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 </head>
 <body>
+<div class="filter">
+    <h2>Filter:</h2>
+    <hr/>
+    <!-- Search by name -->
+    <div class="searchByName">
+        <label for="searhByName">Search by name:</label>
+        <input id='searhByName' name="" value ="" required placeholder="Search by name..."/>
+    </div>
+    <br/>
+    <button id='ButtonName' type="button" name="" value="Submit" />Submit</button>
+    <div id="messageName" class="message"></div>
+    <br/><br/>
 
+
+    <!-- Search by type-->
+    <div class="searchByType">
+        <label for="searhByType">Search by type:</label>
+        <input id='searhByType' name="" value ="" required placeholder="Search by type..."/>
+    </div>
+    <br/>
+    <button id='ButtonType' type="button" name="" value="Submit" />Submit</button>
+    <div id="messageType" class="message"></div>
+    <br/> <br/>
+
+    <!-- List game with selected item -->
+    <h2>Jackpots games:</h2>
+    <hr/>
+    <input id='searchJackpot' type="checkbox" name="jackpot" value="">Jackpot<br>
+    <ul id="ListJackpots"></ul>
+    <br/>
+    <hr/>
+
+    <!-- Select -->
+    <h2 style="display: inline-block; ">Select:</h2>
+    <select id="selectPeople">
+        <option value="choose">Choose ID:</option>
+    </select>
+    <ul id="listPeople"></ul>
+    <!-- SelectKey -->
+    <h2 style="display: inline-block; ">Select as key:</h2>
+    <select id="selectPeopleKey">
+        <option value="choose">Choose ID as Key:</option>
+    </select>
+    <ul id="listPeopleKey"></ul>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="2 - functional intro, data manipulation/andreea-ex1.js"></script>
+</body>
 <script src="1 - recursion, chaining, es5 classes/stefan-homework.js"></script>
-
 </body>
 </html>
